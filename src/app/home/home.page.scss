@@ -2,3 +2,19 @@
   max-height: 35vh;
   overflow: hidden;
 }
+
+.btns-row{
+  margin-left: 0px;
+}
+
+ion-button {
+  font-size: 25px;
+  height: 80px;
+  margin-left: 5px;
+  border-radius: 25px !important;
+}
+
+.grid-col-gap {
+  padding: 0;
+  margin: 0;
+}
