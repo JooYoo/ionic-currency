@@ -11,11 +11,16 @@
 
 <ion-content>
   <ion-item>
-    <ion-label>Currency: </ion-label>
-    <ion-label color="primary">{{ currency }}</ion-label>
-    <ion-button slot="end" fill="clear" (click)="showBasicPiker()">Select</ion-button>
+    <ion-label>currency0: </ion-label>
+    <ion-label color="primary">{{ currency0 }}</ion-label>
+    <ion-button slot="end" fill="clear" (click)="showBasicPiker('currency0')">Select</ion-button>
   </ion-item>
 
+  <ion-item>
+    <ion-label>currency1: </ion-label>
+    <ion-label color="primary">{{ currency1 }}</ion-label>
+    <ion-button slot="end" fill="clear" (click)="showBasicPiker('currency1')">Select</ion-button>
+  </ion-item>
 </ion-content>
 
 <ion-footer>
@@ -76,7 +81,7 @@
           <ion-button Color="medium" expand="full">0</ion-button>
         </ion-col>
         <ion-col class="grid-col-gap" size="3">
-          <ion-button Color="medium" expand="full">AC</ion-button>
+          <ion-button Color="medium" expand="full">C</ion-button>
         </ion-col>
         <ion-col class="grid-col-gap" size="3">
           <ion-button Color="dark" expand="full">&#x2b;</ion-button>

@@ -8,11 +8,14 @@ import { PickerOptions } from '@ionic/core';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
-  currency = ''
+  currency0 = ''
+  currency1 = ''
+  
 
   constructor(private pickerCtrl: PickerController) { }
 
-  async showBasicPiker() {
+  async showBasicPiker(clickedItem:any) {
+
     let opts: PickerOptions = {
       buttons: [
         {
@@ -26,7 +29,7 @@ export class HomePage {
       ],
       columns: [
         {
-          name: 'currency',
+          name: clickedItem,
           options: [
             { text: 'CNY', value: 'A' },
             { text: 'EUR', value: 'B' },
@@ -38,9 +41,12 @@ export class HomePage {
 
     let picker = await this.pickerCtrl.create(opts);
     picker.present();
+
     picker.onDidDismiss().then(async data => {
-      let col = await picker.getColumn('currency');
-      this.currency = col.options[col.selectedIndex].text;
+      let col = await picker.getColumn(clickedItem);
+      let test = col.options[col.selectedIndex].text;
+      
+      console.log(test)
     });
 
   }
