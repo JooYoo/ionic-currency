@@ -10,6 +10,10 @@ import { Currency } from '../model/Currency'
 })
 export class HomePage {
   myCurrencys=[]
+  defaultCurrencys=[
+    new Currency(0, "CYN", 0),
+    new Currency(1, "EUR", 1)
+  ]
   
   currency0 = this.getAllCurrencys()[0].text
   currency1 = this.getAllCurrencys()[1].text
@@ -24,9 +28,7 @@ export class HomePage {
   }
 
 
-  constructor(private pickerCtrl: PickerController) {
-
-  }
+  constructor(private pickerCtrl: PickerController) {}
 
   async showBasicPiker(clickedItem: any) {
 
@@ -45,11 +47,6 @@ export class HomePage {
         {
           name: clickedItem,
           options: this.getAllCurrencys()
-          // [
-          //   { text: 'CNY', value: 'A' },
-          //   { text: 'EUR', value: 'B' },
-          //   { text: 'USD', value: 'C' }
-          // ]
         }
       ]
     };
