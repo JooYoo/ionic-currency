@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { PickerController } from '@ionic/angular';
 import { PickerOptions } from '@ionic/core';
-import { Currency } from '../model/Currency'
+import { Currency } from '../model/Currency';
+
 
 @Component({
   selector: 'app-home',
@@ -9,14 +10,11 @@ import { Currency } from '../model/Currency'
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
-  myCurrencys=[]
-  defaultCurrencys=[
+  myCurrencys = []
+  defaultCurrencys = [
     new Currency(0, "CYN", 0),
     new Currency(1, "EUR", 1)
   ]
-  
-  currency0 = this.getAllCurrencys()[0].text
-  currency1 = this.getAllCurrencys()[1].text
 
   getAllCurrencys() {
     return [
@@ -28,9 +26,10 @@ export class HomePage {
   }
 
 
-  constructor(private pickerCtrl: PickerController) {}
+  constructor(private pickerCtrl: PickerController) { }
 
-  async showBasicPiker(clickedItem: any) {
+  async showBasicPiker(clickedItemId: any, slidingItem) {
+
 
     let opts: PickerOptions = {
       buttons: [
@@ -45,7 +44,7 @@ export class HomePage {
       ],
       columns: [
         {
-          name: clickedItem,
+          name: clickedItemId,
           options: this.getAllCurrencys()
         }
       ]
@@ -55,12 +54,13 @@ export class HomePage {
     picker.present();
 
     picker.onDidDismiss().then(async data => {
-      let col = await picker.getColumn(clickedItem);
-      this.currency1 = col.options[col.selectedIndex].text;
+      let col = await picker.getColumn(clickedItemId);
+      this.defaultCurrencys[clickedItemId].text = col.options[col.selectedIndex].text;
 
-      console.log(this.currency1)
+      // close sliding item
+      slidingItem.close();
+
     });
-
   }
 
 

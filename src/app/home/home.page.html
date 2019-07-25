@@ -10,21 +10,9 @@
 </ion-header>
 
 <ion-content>
-  <!-- <ion-item>
-    <ion-label>currency0: </ion-label>
-    <ion-label color="primary">{{ currency0 }}</ion-label>
-    <ion-button slot="end" fill="clear" (click)="showBasicPiker('currency0')">Select</ion-button>
-  </ion-item>
-
-  <ion-item>
-    <ion-label>currency1: </ion-label>
-    <ion-label color="primary">{{ currency1 }}</ion-label>
-    <ion-button slot="end" fill="clear" (click)="showBasicPiker('currency1')">Select</ion-button>
-  </ion-item> -->
 
 
-
-  <ion-item-sliding>
+  <ion-item-sliding *ngFor="let currency of defaultCurrencys" #slidingItem>
 
     <ion-item-options side="start">
       <ion-item-option color="danger">
@@ -35,7 +23,7 @@
     <ion-item>
       <!-- <ion-icon slot="start" name="more"></ion-icon> -->
       <ion-note color="dark">
-        <h3>CNY</h3>
+        <h3>{{currency.text}}</h3>
       </ion-note>
 
       <ion-label slot="end">
@@ -46,11 +34,15 @@
 
     <ion-item-options side="end">
       <ion-item-option>
-        <ion-icon slot="icon-only" name="list-box"></ion-icon>
+        <ion-icon slot="icon-only" name="list-box" 
+                  (click)="showBasicPiker(currency.id, slidingItem)"
+                  ></ion-icon>
       </ion-item-option>
     </ion-item-options>
 
   </ion-item-sliding>
+
+
 
 </ion-content>
 
