@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { PickerController } from '@ionic/angular';
 import { PickerOptions } from '@ionic/core';
-import { Currency } from '../model/Currency';
+import { Currency } from '../interfaces/currency';
 
 
 @Component({
@@ -11,17 +11,42 @@ import { Currency } from '../model/Currency';
 })
 export class HomePage {
   myCurrencys = []
-  defaultCurrencys = [
-    new Currency(0, "CYN", 0),
-    new Currency(1, "EUR", 1)
+
+  defaultCurrencys: Currency[] = [
+    {
+      id: 0,
+      text: "CYN",
+      value: 0
+    },
+    {
+      id: 1,
+      text: "EUR",
+      value: 1
+    },
   ]
 
-  getAllCurrencys() {
+  getAllCurrencys():Currency[] {
     return [
-      new Currency(0, "CYN", 0),
-      new Currency(1, "EUR", 1),
-      new Currency(2, "USD", 2),
-      new Currency(3, "JPY", 3),
+      {
+        id: 1,
+        text: "CYN",
+        value: 1
+      },
+      {
+        id: 1,
+        text: "EUR",
+        value: 1
+      },
+      {
+        id: 1,
+        text: "USD",
+        value: 1
+      },
+      {
+        id: 1,
+        text: "JPY",
+        value: 1
+      }
     ]
   }
 
