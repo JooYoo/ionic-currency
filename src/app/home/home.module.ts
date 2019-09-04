@@ -5,8 +5,10 @@ import { IonicModule } from '@ionic/angular';
 import { RouterModule } from '@angular/router';
 
 import { HomePage } from './home.page';
+import { ToolbarModule } from '../widget/toolbar/toolbar.module';
 
 @NgModule({
+  declarations: [HomePage],
   imports: [
     CommonModule,
     FormsModule,
@@ -16,8 +18,8 @@ import { HomePage } from './home.page';
         path: '',
         component: HomePage
       }
-    ])
+    ]),
+    ToolbarModule
   ],
-  declarations: [HomePage]
 })
 export class HomePageModule {}
