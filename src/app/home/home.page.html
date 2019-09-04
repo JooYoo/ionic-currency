@@ -4,16 +4,9 @@
 
 <ion-content>
 
-
   <ion-item-sliding *ngFor="let currency of defaultCurrencys" #slidingItem>
 
-    <ion-item-options side="start">
-      <ion-item-option color="danger">
-        <ion-icon slot="icon-only" name="trash"></ion-icon>
-      </ion-item-option>
-    </ion-item-options>
-
-    <ion-item>
+    <ion-item lines="none">
       <!-- <ion-icon slot="start" name="more"></ion-icon> -->
       <ion-note color="dark">
         <h3>{{currency.text}}</h3>
@@ -40,72 +33,5 @@
 </ion-content>
 
 <ion-footer>
-
-  <ion-grid>
-    <div>
-
-      <ion-row class="btns-row">
-        <ion-col class="grid-col-gap" size="3">
-          <ion-button Color="medium" expand="full">7</ion-button>
-        </ion-col>
-        <ion-col class="grid-col-gap" size="3">
-          <ion-button Color="medium" expand="full">8</ion-button>
-        </ion-col>
-        <ion-col class="grid-col-gap" size="3">
-          <ion-button Color="medium" expand="full">9</ion-button>
-        </ion-col>
-        <ion-col class="grid-col-gap" size="3">
-          <ion-button Color="dark" expand="full">&#247;</ion-button>
-        </ion-col>
-      </ion-row>
-
-      <ion-row class="btns-row">
-        <ion-col class="grid-col-gap" size="3">
-          <ion-button Color="medium" expand="full">4</ion-button>
-        </ion-col>
-        <ion-col class="grid-col-gap" size="3">
-          <ion-button Color="medium" expand="full">5</ion-button>
-        </ion-col>
-        <ion-col class="grid-col-gap" size="3">
-          <ion-button Color="medium" expand="full">6</ion-button>
-        </ion-col>
-        <ion-col class="grid-col-gap" size="3">
-          <ion-button Color="dark" expand="full">&#xd7;</ion-button>
-        </ion-col>
-      </ion-row>
-
-      <ion-row class="btns-row">
-        <ion-col class="grid-col-gap" size="3">
-          <ion-button Color="medium" expand="full">1</ion-button>
-        </ion-col>
-        <ion-col class="grid-col-gap" size="3">
-          <ion-button Color="medium" expand="full">2</ion-button>
-        </ion-col>
-        <ion-col class="grid-col-gap" size="3">
-          <ion-button Color="medium" expand="full">3</ion-button>
-        </ion-col>
-        <ion-col class="grid-col-gap" size="3">
-          <ion-button Color="dark" expand="full">&#x2212;</ion-button>
-        </ion-col>
-      </ion-row>
-
-      <ion-row class="btns-row">
-        <ion-col class="grid-col-gap" size="3">
-          <ion-button Color="medium" expand="full">&#8226;</ion-button>
-        </ion-col>
-        <ion-col class="grid-col-gap" size="3">
-          <ion-button Color="medium" expand="full">0</ion-button>
-        </ion-col>
-        <ion-col class="grid-col-gap" size="3">
-          <ion-button Color="medium" expand="full">C</ion-button>
-        </ion-col>
-        <ion-col class="grid-col-gap" size="3">
-          <ion-button Color="dark" expand="full">&#x2b;</ion-button>
-        </ion-col>
-      </ion-row>
-
-    </div>
-
-  </ion-grid>
-
+  <c-keypad></c-keypad>
 </ion-footer>

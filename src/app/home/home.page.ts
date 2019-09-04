@@ -10,7 +10,6 @@ import { Currency } from '../interfaces/currency';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
-  myCurrencys = []
 
   defaultCurrencys: Currency[] = [
     {

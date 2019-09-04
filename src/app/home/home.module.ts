@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 
 import { HomePage } from './home.page';
 import { ToolbarModule } from '../widget/toolbar/toolbar.module';
+import { KeypadModule } from '../widget/keypad/keypad.module';
 
 @NgModule({
   declarations: [HomePage],
@@ -19,7 +20,8 @@ import { ToolbarModule } from '../widget/toolbar/toolbar.module';
         component: HomePage
       }
     ]),
-    ToolbarModule
+    ToolbarModule,
+    KeypadModule
   ],
 })
 export class HomePageModule {}
