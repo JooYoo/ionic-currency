@@ -7,6 +7,7 @@ import { RouterModule } from '@angular/router';
 import { HomePage } from './home.page';
 import { ToolbarModule } from '../widget/toolbar/toolbar.module';
 import { KeypadModule } from '../widget/keypad/keypad.module';
+import { ItemModule } from '../widget/item/item.module';
 
 @NgModule({
   declarations: [HomePage],
@@ -21,7 +22,8 @@ import { KeypadModule } from '../widget/keypad/keypad.module';
       }
     ]),
     ToolbarModule,
-    KeypadModule
+    KeypadModule,
+    ItemModule
   ],
 })
 export class HomePageModule {}
