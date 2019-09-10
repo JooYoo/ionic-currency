@@ -4,17 +4,15 @@
 
 <ion-content>
 
-  <ion-item-sliding *ngFor="let currency of defaultCurrencys" #slidingItem>
+
+  <ion-item-sliding *ngFor="let currency of displayCurrencys" #slidingItem>
 
     <c-item [currency]='currency'></c-item>
-
-    <ion-item-options side="end">
-      <ion-item-option>
-        <ion-icon slot="icon-only" name="list-box" 
-                  (click)="showBasicPiker(currency.id, slidingItem)"
-                  ></ion-icon>
-      </ion-item-option>
-    </ion-item-options>
+    <c-item-option [currency]='currency'
+                   [allCurrencys]='allCurrencys' 
+                   [displayCurrencys] ='displayCurrencys'
+                   [slidingItem]='slidingItem'>
+    </c-item-option>
 
   </ion-item-sliding>
 

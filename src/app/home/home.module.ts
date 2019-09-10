@@ -8,6 +8,7 @@ import { HomePage } from './home.page';
 import { ToolbarModule } from '../widget/toolbar/toolbar.module';
 import { KeypadModule } from '../widget/keypad/keypad.module';
 import { ItemModule } from '../widget/item/item.module';
+import { ItemOptionModule } from '../widget/item-option/item-option.module';
 
 @NgModule({
   declarations: [HomePage],
@@ -23,7 +24,8 @@ import { ItemModule } from '../widget/item/item.module';
     ]),
     ToolbarModule,
     KeypadModule,
-    ItemModule
+    ItemModule,
+    ItemOptionModule
   ],
 })
 export class HomePageModule {}
