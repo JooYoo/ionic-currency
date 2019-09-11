@@ -2,61 +2,61 @@
   <div>
     <ion-row class="btns-row">
       <ion-col class="grid-col-gap" size="3">
-        <ion-button Color="medium" expand="full">7</ion-button>
+        <ion-button Color="medium" expand="full" (click)= "setInput('7')">7</ion-button>
       </ion-col>
       <ion-col class="grid-col-gap" size="3">
-        <ion-button Color="medium" expand="full">8</ion-button>
+        <ion-button Color="medium" expand="full" (click)= "setInput('8')">8</ion-button>
       </ion-col>
       <ion-col class="grid-col-gap" size="3">
-        <ion-button Color="medium" expand="full">9</ion-button>
+        <ion-button Color="medium" expand="full" (click)= "setInput('9')">9</ion-button>
       </ion-col>
       <ion-col class="grid-col-gap" size="3">
-        <ion-button Color="dark" expand="full">&#247;</ion-button>
-      </ion-col>
-    </ion-row>
-
-    <ion-row class="btns-row">
-      <ion-col class="grid-col-gap" size="3">
-        <ion-button Color="medium" expand="full">4</ion-button>
-      </ion-col>
-      <ion-col class="grid-col-gap" size="3">
-        <ion-button Color="medium" expand="full">5</ion-button>
-      </ion-col>
-      <ion-col class="grid-col-gap" size="3">
-        <ion-button Color="medium" expand="full">6</ion-button>
-      </ion-col>
-      <ion-col class="grid-col-gap" size="3">
-        <ion-button Color="dark" expand="full">&#xd7;</ion-button>
+        <ion-button Color="dark" expand="full" (click)= "setInput('/')">&#247;</ion-button>
       </ion-col>
     </ion-row>
 
     <ion-row class="btns-row">
       <ion-col class="grid-col-gap" size="3">
-        <ion-button Color="medium" expand="full">1</ion-button>
+        <ion-button Color="medium" expand="full" (click)= "setInput('4')">4</ion-button>
       </ion-col>
       <ion-col class="grid-col-gap" size="3">
-        <ion-button Color="medium" expand="full">2</ion-button>
+        <ion-button Color="medium" expand="full" (click)= "setInput('5')">5</ion-button>
       </ion-col>
       <ion-col class="grid-col-gap" size="3">
-        <ion-button Color="medium" expand="full">3</ion-button>
+        <ion-button Color="medium" expand="full" (click)= "setInput('6')">6</ion-button>
       </ion-col>
       <ion-col class="grid-col-gap" size="3">
-        <ion-button Color="dark" expand="full">&#x2212;</ion-button>
+        <ion-button Color="dark" expand="full" (click)= "setInput('*')">&#xd7;</ion-button>
       </ion-col>
     </ion-row>
 
     <ion-row class="btns-row">
       <ion-col class="grid-col-gap" size="3">
-        <ion-button Color="medium" expand="full">&#8226;</ion-button>
+        <ion-button Color="medium" expand="full" (click)= "setInput('1')">1</ion-button>
       </ion-col>
       <ion-col class="grid-col-gap" size="3">
-        <ion-button Color="medium" expand="full">0</ion-button>
+        <ion-button Color="medium" expand="full" (click)= "setInput('2')">2</ion-button>
       </ion-col>
       <ion-col class="grid-col-gap" size="3">
-        <ion-button Color="medium" expand="full">C</ion-button>
+        <ion-button Color="medium" expand="full" (click)= "setInput('3')">3</ion-button>
       </ion-col>
       <ion-col class="grid-col-gap" size="3">
-        <ion-button Color="dark" expand="full">&#x2b;</ion-button>
+        <ion-button Color="dark" expand="full" (click)= "setInput('-')">&#x2212;</ion-button>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="btns-row">
+      <ion-col class="grid-col-gap" size="3">
+        <ion-button Color="medium" expand="full" (click)= "setInput('.')">&#8226;</ion-button>
+      </ion-col>
+      <ion-col class="grid-col-gap" size="3">
+        <ion-button Color="medium" expand="full" (click)= "setInput('0')">0</ion-button>
+      </ion-col>
+      <ion-col class="grid-col-gap" size="3">
+        <ion-button Color="medium" expand="full" (click)= "clearKbInput('clear')">C</ion-button>
+      </ion-col>
+      <ion-col class="grid-col-gap" size="3">
+        <ion-button Color="dark" expand="full" (click)= "setInput('+')">&#x2b;</ion-button>
       </ion-col>
     </ion-row>
 

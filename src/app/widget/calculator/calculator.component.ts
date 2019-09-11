@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CalculateService } from 'src/app/providers/calculate.service';
 
 @Component({
   selector: 'c-calculator',
@@ -7,8 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CalculatorComponent implements OnInit {
 
-  constructor() { }
+  public kbInputs: string = "";
+  public result: string = "";
 
-  ngOnInit() {}
 
+  constructor(private calculateService: CalculateService) { }
+
+  ngOnInit() {
+    this.calculateService.currentDigit
+      .subscribe(message => this.kbInputs= message);
+
+    this.calculateService.currentResult
+      .subscribe(message=>this.result=message);
+    
+  }
 }

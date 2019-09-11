@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { CalculateService } from 'src/app/providers/calculate.service';
 
 @Component({
   selector: 'c-keypad',
@@ -7,8 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class KeypadComponent implements OnInit {
 
-  constructor() { }
+  constructor(private calculateService: CalculateService) { }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
+  setInput(nowInput: string) {
+    this.calculateService.setDigit(nowInput);
+    this.calculateService.setResult();
+  }
+
+  clearKbInput(clear: string) {
+    this.calculateService.setDigit(clear);  
+  }
 }
