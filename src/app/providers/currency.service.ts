@@ -13,22 +13,30 @@ export class CurrencyService {
       {
         id: 0,
         text: "CYN",
-        value: 1
+        value: 1,
+        kpInput: '',
+        kpResult:''
       },
       {
         id: 1,
         text: "EUR",
-        value: 1
+        value: 1,
+        kpInput: '',
+        kpResult:''
       },
       {
         id: 2,
         text: "USD",
-        value: 1
+        value: 1,
+        kpInput: '',
+        kpResult:''
       },
       {
         id: 3,
         text: "JPY",
-        value: 1
+        value: 1,
+        kpInput: '',
+        kpResult:''
       }
     ]
   }
