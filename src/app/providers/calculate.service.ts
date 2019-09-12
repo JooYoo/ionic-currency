@@ -12,7 +12,7 @@ export class CalculateService {
   public id: number = 0;
 
   public selectedItem: Currency;
-  public unselectedItems: Currency[]
+  public unSelectedItems: Currency[]
 
   constructor(private currencyService: CurrencyService) { }
 
@@ -37,9 +37,9 @@ export class CalculateService {
       - no highlight; no kpInput
    */
   setUnselectedItems() {
-    this.unselectedItems = this.currencyService.allCurrencys.
+    this.unSelectedItems = this.currencyService.allCurrencys.
       filter(x => x.id != this.id);
-    this.unselectedItems.forEach(item => {
+    this.unSelectedItems.forEach(item => {
       item.isSelected = false;
       item.kpInput = '';
     });
