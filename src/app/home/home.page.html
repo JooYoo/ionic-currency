@@ -7,7 +7,9 @@
 
   <ion-item-sliding *ngFor="let currency of displayCurrencys" #slidingItem>
 
-    <c-item [currency]='currency'></c-item>
+    <c-item [currency]='currency'>
+      <c-calculator slot="end"></c-calculator>
+    </c-item>
     <c-item-option [currency]='currency'
                    [allCurrencys]='allCurrencys' 
                    [displayCurrencys] ='displayCurrencys'
