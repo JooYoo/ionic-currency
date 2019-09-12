@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { CalculateService } from 'src/app/providers/calculate.service';
 
 @Component({
@@ -17,7 +17,7 @@ export class KeypadComponent implements OnInit {
     this.calculateService.setResult();
   }
 
-  clearKbInput(clear: string) {
-    this.calculateService.setDigit(clear);  
+  clearKbInput() {
+    this.calculateService.clearDigit();
   }
 }

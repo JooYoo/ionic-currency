@@ -1,38 +1,46 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { CurrencyService } from './currency.service';
+import { Currency } from '../interfaces/currency';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CalculateService {
 
-  private digits: string = '';
-  private digitSource = new BehaviorSubject<string>("");
-  public currentDigit = this.digitSource.asObservable();
+  public digits: string = '';
+  public result: string = '';
+  private id: number = 0;
 
-  private result: string = ''; 
-  private resultSource = new BehaviorSubject<string>("1");
-  public currentResult = this.resultSource.asObservable();
+  constructor(private currencyService: CurrencyService) { }
 
-  constructor() { }
-
-  setDigit(digit: string) {
-    if (digit == 'clear') {
-      this.digits = '';
-      this.digitSource.next('');
-      this.resultSource.next('1');
-    }else{
-      this.digits += digit;
-      this.digitSource.next(this.digits);
-    }
+  getSelectId(id: number) {
+    this.id = id;
   }
 
-  setResult(){
-    this.result = this.calculateKbInput(this.digits);
-    this.resultSource.next(this.result);
+  getCurrency():Currency{
+    return this.currencyService.allCurrencys[this.id]
+  }
+
+  setDigit(digit: string) {
+    this.digits += digit;
+    this.getCurrency().kpInput = this.digits;
+  }
+
+  setResult() {
+    let currentCurrency = this.getCurrency();
+    currentCurrency.kpResult = this.calculateKbInput(this.digits);
+  }
+
+  clearDigit() {
+    this.digits='';
+    this.result ='';
+    this.getCurrency().kpInput = '';
+    this.getCurrency().kpResult = '1';
   }
 
   calculateKbInput(kbInputs: string): string {
+    this.result = this.getCurrency().kpResult;
+
     try {
       var kbResult: string = eval(kbInputs);
       return kbResult;
@@ -41,4 +49,7 @@ export class CalculateService {
       return this.result;
     }
   }
+
+
+
 }

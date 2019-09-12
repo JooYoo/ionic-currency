@@ -8,6 +8,37 @@ export class CurrencyService {
 
   constructor() { }
 
+  allCurrencys: Currency[]=[
+    {
+      id: 0,
+      text: "CYN",
+      value: 1,
+      kpInput: '',
+      kpResult:'1'
+    },
+    {
+      id: 1,
+      text: "EUR",
+      value: 1,
+      kpInput: '',
+      kpResult:'1'
+    },
+    {
+      id: 2,
+      text: "USD",
+      value: 1,
+      kpInput: '',
+      kpResult:'1'
+    },
+    {
+      id: 3,
+      text: "JPY",
+      value: 1,
+      kpInput: '',
+      kpResult:'1'
+    }
+  ]
+
   getAllCurrencys(): Currency[] {
     return [
       {
@@ -15,28 +46,28 @@ export class CurrencyService {
         text: "CYN",
         value: 1,
         kpInput: '',
-        kpResult:''
+        kpResult:'1'
       },
       {
         id: 1,
         text: "EUR",
         value: 1,
         kpInput: '',
-        kpResult:''
+        kpResult:'1'
       },
       {
         id: 2,
         text: "USD",
         value: 1,
         kpInput: '',
-        kpResult:''
+        kpResult:'1'
       },
       {
         id: 3,
         text: "JPY",
         value: 1,
         kpInput: '',
-        kpResult:''
+        kpResult:'1'
       }
     ]
   }
@@ -44,9 +75,9 @@ export class CurrencyService {
 
   displayCurrencys(): Currency[] {
     return [
-      this.getAllCurrencys()[0],
-      this.getAllCurrencys()[1],
-      this.getAllCurrencys()[2]
+      this.allCurrencys[0],
+      this.allCurrencys[1],
+      this.allCurrencys[2]
     ]
   }
 

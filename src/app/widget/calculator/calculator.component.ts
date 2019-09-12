@@ -9,19 +9,10 @@ import { Currency } from 'src/app/interfaces/currency';
 })
 export class CalculatorComponent implements OnInit {
 
-  public kbInputs: string = "";
-  public result: string = "";
   @Input() currency: Currency
-
 
   constructor(private calculateService: CalculateService) { }
 
-  ngOnInit() {
-    this.calculateService.currentDigit
-      .subscribe(message => this.kbInputs= message);
-
-    this.calculateService.currentResult
-      .subscribe(message=>this.result=message);
-    
-  }
+  ngOnInit() { }
+ 
 }

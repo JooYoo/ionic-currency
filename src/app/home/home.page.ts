@@ -18,6 +18,6 @@ export class HomePage {
 
     ngOnInit(){
       this.displayCurrencys = this.currencyService.displayCurrencys();
-      this.allCurrencys = this.currencyService.getAllCurrencys();
+      this.allCurrencys = this.currencyService.allCurrencys;
     }
 }
