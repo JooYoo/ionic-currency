@@ -1,3 +1,7 @@
-.note__item{
-    padding: 10px 0;
+.note__item {
+  padding: 10px 0;
 }
+
+.selected-item {
+    --background:var(--ion-color-light);
+ }

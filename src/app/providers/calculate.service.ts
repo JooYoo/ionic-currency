@@ -9,7 +9,7 @@ export class CalculateService {
 
   public digits: string = '';
   public result: string = '';
-  private id: number = 0;
+  public id: number = 0;
 
   constructor(private currencyService: CurrencyService) { }
 

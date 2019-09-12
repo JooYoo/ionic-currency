@@ -4,4 +4,5 @@ export interface Currency {
     value: number;
     kpInput: string;
     kpResult: string;
+    isSelected: boolean;
 }

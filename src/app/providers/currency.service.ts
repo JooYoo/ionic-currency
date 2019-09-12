@@ -14,28 +14,32 @@ export class CurrencyService {
       text: "CYN",
       value: 1,
       kpInput: '',
-      kpResult:'1'
+      kpResult:'1',
+      isSelected: false
     },
     {
       id: 1,
       text: "EUR",
       value: 1,
       kpInput: '',
-      kpResult:'1'
+      kpResult:'1',
+      isSelected: false
     },
     {
       id: 2,
       text: "USD",
       value: 1,
       kpInput: '',
-      kpResult:'1'
+      kpResult:'1',
+      isSelected: false
     },
     {
       id: 3,
       text: "JPY",
       value: 1,
       kpInput: '',
-      kpResult:'1'
+      kpResult:'1',
+      isSelected: false
     }
   ]
 
@@ -46,28 +50,32 @@ export class CurrencyService {
         text: "CYN",
         value: 1,
         kpInput: '',
-        kpResult:'1'
+        kpResult:'1',
+        isSelected: false
       },
       {
         id: 1,
         text: "EUR",
         value: 1,
         kpInput: '',
-        kpResult:'1'
+        kpResult:'1',
+        isSelected: false
       },
       {
         id: 2,
         text: "USD",
         value: 1,
         kpInput: '',
-        kpResult:'1'
+        kpResult:'1',
+        isSelected: false
       },
       {
         id: 3,
         text: "JPY",
         value: 1,
         kpInput: '',
-        kpResult:'1'
+        kpResult:'1',
+        isSelected: false
       }
     ]
   }
