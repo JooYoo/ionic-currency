@@ -1,18 +1,20 @@
 import { Injectable } from '@angular/core';
 import { Currency } from '../interfaces/currency';
+import { Observable, of } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CurrencyService {
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   allCurrencys: Currency[]=[
     {
       id: 0,
       text: "CYN",
-      value: 1,
+      rate: 1,
       kpResult:'1',
       kpInput: '',
       isSelected: false
@@ -20,7 +22,7 @@ export class CurrencyService {
     {
       id: 1,
       text: "EUR",
-      value: 1,
+      rate: 1,
       kpResult:'2',
       kpInput: '',
       isSelected: false
@@ -28,7 +30,7 @@ export class CurrencyService {
     {
       id: 2,
       text: "USD",
-      value: 1,
+      rate: 1,
       kpResult:'3',
       kpInput: '',
       isSelected: false
@@ -36,12 +38,32 @@ export class CurrencyService {
     {
       id: 3,
       text: "JPY",
-      value: 1,
+      rate: 1,
       kpResult:'4',
       kpInput: '',
       isSelected: false
     }
   ]
+
+  rawCurrencys:any;
+
+
+
+  setupCurrency(currencyType:string){
+    this.getApiCurreny(currencyType); 
+  }
+
+  getApiCurreny(currencyType: string){
+    let obs = this.http.get<any>('https://api.exchangeratesapi.io/latest?base='+currencyType);
+    obs.subscribe((data)=>{
+      this.rawCurrencys = data;
+      console.log(this.rawCurrencys);
+
+      
+      
+    });
+  }
+ 
 
 
   displayCurrencys(): Currency[] {

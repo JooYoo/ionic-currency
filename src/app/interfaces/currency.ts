@@ -1,7 +1,7 @@
 export interface Currency {
     id: number;
     text: string;
-    value: number;
+    rate: number;
     kpInput: string;
     kpResult: string;
     isSelected: boolean;

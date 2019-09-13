@@ -14,10 +14,16 @@ export class HomePage {
   allCurrencys:Currency[];
 
 
+
+
   constructor(private currencyService: CurrencyService) { }
 
     ngOnInit(){
       this.displayCurrencys = this.currencyService.displayCurrencys();
       this.allCurrencys = this.currencyService.allCurrencys;
+
+      this.currencyService.setupCurrency('CNY');
     }
+
+  
 }
