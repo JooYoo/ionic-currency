@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Currency } from '../interfaces/currency';
 import { Observable, of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { Icurrency } from '../interfaces/icurrency';
 
 @Injectable({
   providedIn: 'root'
@@ -45,7 +46,10 @@ export class CurrencyService {
     }
   ]
 
-  rawCurrencys:any;
+  apiCurrencys:Icurrency[];
+  
+
+
 
 
 
@@ -56,10 +60,16 @@ export class CurrencyService {
   getApiCurreny(currencyType: string){
     let obs = this.http.get<any>('https://api.exchangeratesapi.io/latest?base='+currencyType);
     obs.subscribe((data)=>{
-      this.rawCurrencys = data;
-      console.log(this.rawCurrencys);
+      this.apiCurrencys = data.rates;
+      console.log(this.apiCurrencys);
+
 
       
+      // this.allCurrencys.forEach(currency => {
+      //   let currencyType = currency.text;
+      //   currency.rate = this.rawCurrencys.find(x=>x.rates.)
+      // });
+
       
     });
   }
