@@ -20,8 +20,9 @@ export class ItemComponent implements OnInit {
   }
 
   setItem() {
-    this.calculateService.getSelectId(this.currency.id);
     this.currencyService.getApiCurrenies(this.currency.text);
+
+    this.calculateService.getSelectId(this.currency.id);
     this.calculateService.setSelectedItem(this.currency);
     this.calculateService.setUnselectedItems();
   }
