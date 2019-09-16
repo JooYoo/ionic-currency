@@ -22,7 +22,8 @@ export class HomePage {
       this.displayCurrencys = this.currencyService.displayCurrencys();
       this.allCurrencys = this.currencyService.allCurrencys;
 
-      this.currencyService.setupCurrency('CNY');
+      this.currencyService.updateCurrency('CNY', this.currencyService.allCurrencys);
+      console.log(this.currencyService.allCurrencys);
     }
 
   

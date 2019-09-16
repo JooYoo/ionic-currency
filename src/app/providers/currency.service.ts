@@ -11,12 +11,12 @@ export class CurrencyService {
 
   constructor(private http: HttpClient) { }
 
-  allCurrencys: Currency[]=[
+  allCurrencys: Currency[] = [
     {
       id: 0,
-      text: "CYN",
+      text: "CNY",
       rate: 1,
-      kpResult:'1',
+      kpResult: '1',
       kpInput: '',
       isSelected: false
     },
@@ -24,7 +24,7 @@ export class CurrencyService {
       id: 1,
       text: "EUR",
       rate: 1,
-      kpResult:'2',
+      kpResult: '2',
       kpInput: '',
       isSelected: false
     },
@@ -32,7 +32,7 @@ export class CurrencyService {
       id: 2,
       text: "USD",
       rate: 1,
-      kpResult:'3',
+      kpResult: '3',
       kpInput: '',
       isSelected: false
     },
@@ -40,40 +40,36 @@ export class CurrencyService {
       id: 3,
       text: "JPY",
       rate: 1,
-      kpResult:'4',
+      kpResult: '4',
       kpInput: '',
       isSelected: false
     }
   ]
 
-  apiCurrencys:Icurrency[];
-  
 
-
-
-
-
-  setupCurrency(currencyType:string){
-    this.getApiCurreny(currencyType); 
+  updateCurrency(selectCurrency: string, allCurrencys: Currency[]) {
+    this.getApiCurreny(selectCurrency, allCurrencys);
   }
 
-  getApiCurreny(currencyType: string){
-    let obs = this.http.get<any>('https://api.exchangeratesapi.io/latest?base='+currencyType);
-    obs.subscribe((data)=>{
-      this.apiCurrencys = data.rates;
-      console.log(this.apiCurrencys);
-
-
-      
-      // this.allCurrencys.forEach(currency => {
-      //   let currencyType = currency.text;
-      //   currency.rate = this.rawCurrencys.find(x=>x.rates.)
-      // });
-
-      
+  getApiCurreny(selectCurrency: string, allCurrencys: Currency[]) {
+    let obs = this.http.get<any>('https://api.exchangeratesapi.io/latest?base=' + selectCurrency);
+    obs.subscribe((data) => {
+      let apiCurrencys = data.rates;
+      this.setRates(apiCurrencys, allCurrencys)
     });
   }
- 
+
+  setRates(apiCurrencys: any, allCurrencys: Currency[]) {
+    Object.keys(apiCurrencys).forEach(function (key) {
+      let currencyType = allCurrencys.find(x => x.text == key);
+      if (currencyType) {
+        currencyType.rate = apiCurrencys[key];
+      }
+    });
+  }
+
+
+
 
 
   displayCurrencys(): Currency[] {
