@@ -11,20 +11,17 @@ import { CurrencyService } from '../providers/currency.service';
 export class HomePage {
 
   displayCurrencys: Currency[];
-  allCurrencys:Currency[];
-
-
-
+  allCurrencys: Currency[];
 
   constructor(private currencyService: CurrencyService) { }
 
-    ngOnInit(){
-      this.displayCurrencys = this.currencyService.displayCurrencys();
-      this.allCurrencys = this.currencyService.allCurrencys;
+  ngOnInit() {
+    /*
+      in the begining: update once all the currencys and load them to local Currency[]
+    */
+    this.currencyService.updateCurrency('CNY', this.currencyService.allCurrencys);
 
-      this.currencyService.updateCurrency('CNY', this.currencyService.allCurrencys);
-      console.log(this.currencyService.allCurrencys);
-    }
-
-  
+    this.displayCurrencys = this.currencyService.displayCurrencys();
+    this.allCurrencys = this.currencyService.allCurrencys;
+  }
 }

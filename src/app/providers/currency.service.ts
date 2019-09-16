@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Currency } from '../interfaces/currency';
-import { Observable, of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { Icurrency } from '../interfaces/icurrency';
 
 @Injectable({
   providedIn: 'root'
@@ -63,7 +61,7 @@ export class CurrencyService {
     Object.keys(apiCurrencys).forEach(function (key) {
       let currencyType = allCurrencys.find(x => x.text == key);
       if (currencyType) {
-        currencyType.rate = apiCurrencys[key];
+        currencyType.rate = apiCurrencys[key].toFixed(2);
       }
     });
   }
@@ -76,7 +74,8 @@ export class CurrencyService {
     return [
       this.allCurrencys[0],
       this.allCurrencys[1],
-      this.allCurrencys[2]
+      this.allCurrencys[2],
+      this.allCurrencys[3],
     ]
   }
 

@@ -25,11 +25,18 @@ export class CalculateService {
   /* selected item:
      - highlight item
      - reset kpResult to 1
+     - the API has problem: when EUR selected there is no {'EUR':1} in the list.
   */
-  setSelectedItem() {
+  setSelectedItem(selectedCurrency: Currency) {
     this.selectedItem = this.currencyService.allCurrencys[this.id];
     this.selectedItem.isSelected = true;
     this.selectedItem.kpResult = "1"
+    this.apiEurFix(selectedCurrency)
+  }
+  apiEurFix(selectedCurrency:Currency){
+    if (selectedCurrency.text == "EUR") {
+      selectedCurrency.rate = 1;
+    }
   }
 
   /* unselected item 

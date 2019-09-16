@@ -12,15 +12,17 @@ import { CurrencyService } from 'src/app/providers/currency.service';
 export class ItemComponent implements OnInit {
   @Input() currency: Currency;
 
-  constructor(private calculateService: CalculateService) { }
+  constructor(private calculateService: CalculateService,
+              private currencyService: CurrencyService) { }
 
   ngOnInit() {
-    this.calculateService.setSelectedItem();
+    this.calculateService.setSelectedItem(this.currency);
   }
 
   setItem() {
     this.calculateService.getSelectId(this.currency.id);
-    this.calculateService.setSelectedItem();
+    this.currencyService.updateCurrency(this.currency.text,this.currencyService.allCurrencys);
+    this.calculateService.setSelectedItem(this.currency);
     this.calculateService.setUnselectedItems();
   }
 
