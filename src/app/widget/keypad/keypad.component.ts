@@ -13,8 +13,7 @@ export class KeypadComponent implements OnInit {
   ngOnInit() { }
 
   setInput(nowInput: string) {
-    this.calculateService.setDigit(nowInput);
-    this.calculateService.setResult();
+    this.calculateService.buildDigits(nowInput);
   }
 
   clearKbInput() {

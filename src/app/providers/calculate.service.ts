@@ -7,8 +7,6 @@ import { Currency } from '../interfaces/currency';
 })
 export class CalculateService {
 
-  public digits: string = '';
-  public result: string = '';
   public id: number = 0;
 
   public selectedItem: Currency;
@@ -18,8 +16,6 @@ export class CalculateService {
 
   getSelectId(id: number) {
     this.id = id;
-    this.digits ='';
-    this.result ='';
   }
 
   /* selected item:
@@ -30,10 +26,12 @@ export class CalculateService {
   setSelectedItem(selectedCurrency: Currency) {
     this.selectedItem = this.currencyService.allCurrencys[this.id];
     this.selectedItem.isSelected = true;
-    this.selectedItem.kpResult = "1"
-    this.apiEurFix(selectedCurrency)
+    this.selectedItem.kpResult = '1.00';
+    this.selectedItem.kpInput = '';
+    
+    this.apiEurFix(selectedCurrency);
   }
-  apiEurFix(selectedCurrency:Currency){
+  apiEurFix(selectedCurrency: Currency) {
     if (selectedCurrency.text == "EUR") {
       selectedCurrency.rate = 1;
     }
@@ -46,39 +44,37 @@ export class CalculateService {
   setUnselectedItems() {
     this.unSelectedItems = this.currencyService.allCurrencys.
       filter(x => x.id != this.id);
-    this.unSelectedItems.forEach(item => {
-      item.isSelected = false;
-      item.kpInput = '';
+    this.unSelectedItems.forEach(currency => {
+      currency.isSelected = false;
+      currency.kpInput = '';
     });
   }
 
-  setDigit(digit: string) {
-    this.digits += digit;
-    this.selectedItem.kpInput = this.digits;
-  }
-
-  setResult() {
-    let currentCurrency = this.selectedItem;
-    currentCurrency.kpResult = this.calculateKbInput(this.digits);
+  /* keypad: calculation */
+  buildDigits(nowInput: string) {
+    this.selectedItem.kpInput += nowInput;
+    this.calculateKbInput(this.selectedItem);
   }
 
   clearDigit() {
-    this.digits = '';
-    this.result = '';
     this.selectedItem.kpInput = '';
     this.selectedItem.kpResult = '1';
+    this.calculateCurrencys(this.selectedItem.kpResult, this.currencyService.allCurrencys);
   }
 
-  calculateKbInput(kbInputs: string): string {
-    this.result = this.selectedItem.kpResult;
-
+  calculateKbInput(selectedItem: Currency) {
     try {
-      var kbResult: string = eval(kbInputs);
-      return kbResult;
+      selectedItem.kpResult = eval(selectedItem.kpInput);
+      this.calculateCurrencys(selectedItem.kpResult, this.currencyService.allCurrencys);
     } catch (error) {
-      console.warn('equation is not finished.')
-      return this.result;
+      console.warn('Currency App: equation is not finished.')
     }
+  }
+
+  calculateCurrencys(selectedItemKpResult: string, allCurrencys: Currency[]) {
+    allCurrencys.forEach(currency => {
+      currency.kpResult = String((Number(selectedItemKpResult) * currency.rate).toFixed(2));
+    });
   }
 
 

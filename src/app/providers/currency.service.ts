@@ -59,9 +59,10 @@ export class CurrencyService {
 
   setRates(apiCurrencys: any, allCurrencys: Currency[]) {
     Object.keys(apiCurrencys).forEach(function (key) {
-      let currencyType = allCurrencys.find(x => x.text == key);
-      if (currencyType) {
-        currencyType.rate = apiCurrencys[key].toFixed(2);
+      let currency = allCurrencys.find(x => x.text == key);
+      if (currency) {
+        currency.rate = apiCurrencys[key].toFixed(2);
+        currency.kpResult = apiCurrencys[key].toFixed(2);
       }
     });
   }
