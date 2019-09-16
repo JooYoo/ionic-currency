@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Currency } from '../interfaces/currency';
+import { iCurrency } from '../interfaces/icurrency';
 import { CurrencyService } from '../providers/currency.service';
 
 
@@ -10,8 +10,8 @@ import { CurrencyService } from '../providers/currency.service';
 })
 export class HomePage {
 
-  displayCurrencys: Currency[];
-  allCurrencys: Currency[];
+  displayCurrencys: iCurrency[];
+  allCurrencys: iCurrency[];
 
   constructor(private currencyService: CurrencyService) { }
 
@@ -23,5 +23,8 @@ export class HomePage {
 
     this.displayCurrencys = this.currencyService.displayCurrencys();
     this.allCurrencys = this.currencyService.allCurrencys;
+
+    console.log(this.allCurrencys)
+
   }
 }

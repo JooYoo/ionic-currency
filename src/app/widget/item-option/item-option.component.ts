@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { PickerOptions } from '@ionic/core';
 import { PickerController } from '@ionic/angular';
-import { Currency } from '../../interfaces/currency';
+import { iCurrency } from '../../interfaces/icurrency';
 
 
 @Component({
@@ -10,10 +10,10 @@ import { Currency } from '../../interfaces/currency';
   styleUrls: ['./item-option.component.scss'],
 })
 export class ItemOptionComponent implements OnInit {
-  @Input() currency: Currency;
+  @Input() currency: iCurrency;
   @Input() slidingItem: any;
-  @Input() allCurrencys: Currency[]
-  @Input() displayCurrencys: Currency[]
+  @Input() allCurrencys: iCurrency[]
+  @Input() displayCurrencys: iCurrency[]
 
   constructor( private pickerCtrl: PickerController) { }
 

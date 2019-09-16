@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Currency } from '../../interfaces/currency';
+import { iCurrency } from '../../interfaces/icurrency'
 import { CalculateService } from 'src/app/providers/calculate.service';
 import { CurrencyService } from 'src/app/providers/currency.service';
 
@@ -10,7 +10,7 @@ import { CurrencyService } from 'src/app/providers/currency.service';
   styleUrls: ['./item.component.scss'],
 })
 export class ItemComponent implements OnInit {
-  @Input() currency: Currency;
+  @Input() currency: iCurrency;
 
   constructor(private calculateService: CalculateService,
               private currencyService: CurrencyService) { }

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { CurrencyService } from './currency.service';
-import { Currency } from '../interfaces/currency';
+import { iCurrency } from '../interfaces/icurrency';
 
 @Injectable({
   providedIn: 'root'
@@ -9,8 +9,8 @@ export class CalculateService {
 
   public id: number = 0;
 
-  public selectedItem: Currency;
-  public unSelectedItems: Currency[]
+  public selectedItem: iCurrency;
+  public unSelectedItems: iCurrency[]
 
   constructor(private currencyService: CurrencyService) { }
 
@@ -23,7 +23,7 @@ export class CalculateService {
      - reset kpResult to 1
      - the API has problem: when EUR selected there is no {'EUR':1} in the list.
   */
-  setSelectedItem(selectedCurrency: Currency) {
+  setSelectedItem(selectedCurrency: iCurrency) {
     this.selectedItem = this.currencyService.allCurrencys[this.id];
     this.selectedItem.isSelected = true;
     this.selectedItem.kpResult = '1.00';
@@ -31,7 +31,7 @@ export class CalculateService {
     
     this.apiEurFix(selectedCurrency);
   }
-  apiEurFix(selectedCurrency: Currency) {
+  apiEurFix(selectedCurrency: iCurrency) {
     if (selectedCurrency.text == "EUR") {
       selectedCurrency.rate = 1;
     }
@@ -62,7 +62,7 @@ export class CalculateService {
     this.calculateCurrencys(this.selectedItem.kpResult, this.currencyService.allCurrencys);
   }
 
-  calculateKbInput(selectedItem: Currency) {
+  calculateKbInput(selectedItem: iCurrency) {
     try {
       selectedItem.kpResult = eval(selectedItem.kpInput);
       this.calculateCurrencys(selectedItem.kpResult, this.currencyService.allCurrencys);
@@ -71,7 +71,7 @@ export class CalculateService {
     }
   }
 
-  calculateCurrencys(selectedItemKpResult: string, allCurrencys: Currency[]) {
+  calculateCurrencys(selectedItemKpResult: string, allCurrencys: iCurrency[]) {
     allCurrencys.forEach(currency => {
       currency.kpResult = String((Number(selectedItemKpResult) * currency.rate).toFixed(2));
     });

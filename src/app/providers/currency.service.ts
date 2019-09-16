@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Currency } from '../interfaces/currency';
+import { iCurrency } from '../interfaces/icurrency';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
@@ -9,75 +9,90 @@ export class CurrencyService {
 
   constructor(private http: HttpClient) { }
 
-  allCurrencys: Currency[] = [
+  allCurrencys: iCurrency[] = [
     {
       id: 0,
       text: "CNY",
-      rate: 1,
-      kpResult: '1',
+      rate: 0,
+      kpResult: '',
       kpInput: '',
       isSelected: false
     },
     {
       id: 1,
       text: "EUR",
-      rate: 1,
-      kpResult: '2',
+      rate: 0,
+      kpResult: '',
       kpInput: '',
       isSelected: false
     },
     {
       id: 2,
       text: "USD",
-      rate: 1,
-      kpResult: '3',
+      rate: 0,
+      kpResult: '',
       kpInput: '',
       isSelected: false
     },
     {
       id: 3,
       text: "JPY",
-      rate: 1,
-      kpResult: '4',
+      rate: 0,
+      kpResult: '',
       kpInput: '',
       isSelected: false
     }
   ]
 
 
-  updateCurrency(selectCurrency: string, allCurrencys: Currency[]) {
+  updateCurrency(selectCurrency: string, allCurrencys: iCurrency[]) {
     this.getApiCurreny(selectCurrency, allCurrencys);
   }
 
-  getApiCurreny(selectCurrency: string, allCurrencys: Currency[]) {
+  getApiCurreny(selectCurrency: string, allCurrencys: iCurrency[]) {
     let obs = this.http.get<any>('https://api.exchangeratesapi.io/latest?base=' + selectCurrency);
     obs.subscribe((data) => {
       let apiCurrencys = data.rates;
-      this.setRates(apiCurrencys, allCurrencys)
+      this.setRates(apiCurrencys)
     });
   }
 
-  setRates(apiCurrencys: any, allCurrencys: Currency[]) {
-    Object.keys(apiCurrencys).forEach(function (key) {
-      let currency = allCurrencys.find(x => x.text == key);
+  setRates(apiCurrencys: any) {
+
+    Object.keys(apiCurrencys).forEach((key) => {
+      let currency = this.allCurrencys.find(x => x.text == key);
       if (currency) {
         currency.rate = apiCurrencys[key].toFixed(2);
         currency.kpResult = apiCurrencys[key].toFixed(2);
+      } else {
+        this.setupCurrencys(apiCurrencys, key, this.allCurrencys);
       }
     });
   }
 
+  setupCurrencys(apiCurrencys: any, key: any, allCurrencys: iCurrency[]) {
+    let newCurrency = {
+      id: allCurrencys.length - 1,
+      text: key,
+      rate: apiCurrencys[key].toFixed(2),
+      kpResult: apiCurrencys[key].toFixed(2),
+      kpInput: '',
+      isSelected: false
+    }
+    allCurrencys.push(newCurrency);
+  }
 
-
-
-
-  displayCurrencys(): Currency[] {
+  displayCurrencys(): iCurrency[] {
     return [
-      this.allCurrencys[0],
-      this.allCurrencys[1],
-      this.allCurrencys[2],
-      this.allCurrencys[3],
+      this.findCurrency("CNY", this.allCurrencys),
+      this.findCurrency("EUR", this.allCurrencys),
+      this.findCurrency("USD", this.allCurrencys),
+      this.findCurrency("JPY", this.allCurrencys),
     ]
+  }
+
+  findCurrency(currencyType: string, allCurrencys: iCurrency[]){
+    return allCurrencys.find(x=>x.text == currencyType)
   }
 
 }

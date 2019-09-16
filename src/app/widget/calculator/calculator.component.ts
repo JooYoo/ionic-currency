@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { CalculateService } from 'src/app/providers/calculate.service';
-import { Currency } from 'src/app/interfaces/currency';
+import { iCurrency } from 'src/app/interfaces/icurrency';
 
 @Component({
   selector: 'c-calculator',
@@ -9,7 +9,7 @@ import { Currency } from 'src/app/interfaces/currency';
 })
 export class CalculatorComponent implements OnInit {
 
-  @Input() currency: Currency
+  @Input() currency: iCurrency
 
   constructor(private calculateService: CalculateService) { }
 
