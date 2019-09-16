@@ -44,6 +44,7 @@ export class CurrencyService {
     }
   ]
 
+  displayCurrencies: iCurrency[] = [];
 
   getApiCurrenies(selectCurrency: string) {
     let obs = this.http.get<any>('https://api.exchangeratesapi.io/latest?base=' + selectCurrency);
@@ -63,6 +64,7 @@ export class CurrencyService {
         this.setupCurrencys(key, apiCurrencies[key]);
       }
     });
+    this.setupDisplayCurrencies()
   }
 
   setupCurrencys(key: any, value: any) {
@@ -77,17 +79,15 @@ export class CurrencyService {
     this.allCurrencys.push(newCurrency);
   }
 
-  displayCurrencys(): iCurrency[] {
-    return [
-      this.findCurrency("CNY"),
-      this.findCurrency("EUR"),
-      this.findCurrency("USD"),
-      this.findCurrency("JPY"),
-    ]
+  setupDisplayCurrencies() {
+    this.findCurrency("CNY");
+    this.findCurrency("EUR");
+    this.findCurrency("USD");
+    this.findCurrency("JPY");
   }
-
-  findCurrency(currencyType: string){
-    return this.allCurrencys.find(x=>x.text == currencyType)
+  findCurrency(currencyType: string) {
+    let newDisplayCurrency = this.allCurrencys.find(x => x.text == currencyType);
+    this.displayCurrencies.push(newDisplayCurrency);
   }
 
 }
