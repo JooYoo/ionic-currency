@@ -45,54 +45,49 @@ export class CurrencyService {
   ]
 
 
-  updateCurrency(selectCurrency: string, allCurrencys: iCurrency[]) {
-    this.getApiCurreny(selectCurrency, allCurrencys);
-  }
-
-  getApiCurreny(selectCurrency: string, allCurrencys: iCurrency[]) {
+  getApiCurrenies(selectCurrency: string) {
     let obs = this.http.get<any>('https://api.exchangeratesapi.io/latest?base=' + selectCurrency);
     obs.subscribe((data) => {
-      let apiCurrencys = data.rates;
-      this.setRates(apiCurrencys)
+      let apiCurrencies = data.rates;
+      this.setRates(apiCurrencies)
     });
   }
 
-  setRates(apiCurrencys: any) {
-
-    Object.keys(apiCurrencys).forEach((key) => {
+  setRates(apiCurrencies: any) {
+    Object.keys(apiCurrencies).forEach((key) => {
       let currency = this.allCurrencys.find(x => x.text == key);
       if (currency) {
-        currency.rate = apiCurrencys[key].toFixed(2);
-        currency.kpResult = apiCurrencys[key].toFixed(2);
+        currency.rate = apiCurrencies[key].toFixed(2);
+        currency.kpResult = apiCurrencies[key].toFixed(2);
       } else {
-        this.setupCurrencys(apiCurrencys, key, this.allCurrencys);
+        this.setupCurrencys(key, apiCurrencies[key]);
       }
     });
   }
 
-  setupCurrencys(apiCurrencys: any, key: any, allCurrencys: iCurrency[]) {
+  setupCurrencys(key: any, value: any) {
     let newCurrency = {
-      id: allCurrencys.length - 1,
+      id: this.allCurrencys.length,
       text: key,
-      rate: apiCurrencys[key].toFixed(2),
-      kpResult: apiCurrencys[key].toFixed(2),
+      rate: value.toFixed(2),
+      kpResult: value.toFixed(2),
       kpInput: '',
       isSelected: false
     }
-    allCurrencys.push(newCurrency);
+    this.allCurrencys.push(newCurrency);
   }
 
   displayCurrencys(): iCurrency[] {
     return [
-      this.findCurrency("CNY", this.allCurrencys),
-      this.findCurrency("EUR", this.allCurrencys),
-      this.findCurrency("USD", this.allCurrencys),
-      this.findCurrency("JPY", this.allCurrencys),
+      this.findCurrency("CNY"),
+      this.findCurrency("EUR"),
+      this.findCurrency("USD"),
+      this.findCurrency("JPY"),
     ]
   }
 
-  findCurrency(currencyType: string, allCurrencys: iCurrency[]){
-    return allCurrencys.find(x=>x.text == currencyType)
+  findCurrency(currencyType: string){
+    return this.allCurrencys.find(x=>x.text == currencyType)
   }
 
 }

@@ -19,7 +19,7 @@ export class HomePage {
     /*
       in the begining: update once all the currencys and load them to local Currency[]
     */
-    this.currencyService.updateCurrency('CNY', this.currencyService.allCurrencys);
+    this.currencyService.getApiCurrenies('CNY');
 
     this.displayCurrencys = this.currencyService.displayCurrencys();
     this.allCurrencys = this.currencyService.allCurrencys;

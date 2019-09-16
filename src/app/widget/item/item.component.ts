@@ -21,7 +21,7 @@ export class ItemComponent implements OnInit {
 
   setItem() {
     this.calculateService.getSelectId(this.currency.id);
-    this.currencyService.updateCurrency(this.currency.text,this.currencyService.allCurrencys);
+    this.currencyService.getApiCurrenies(this.currency.text);
     this.calculateService.setSelectedItem(this.currency);
     this.calculateService.setUnselectedItems();
   }
