@@ -3,7 +3,6 @@ import { PickerOptions } from '@ionic/core';
 import { PickerController } from '@ionic/angular';
 import { iCurrency } from '../../interfaces/icurrency';
 
-
 @Component({
   selector: 'c-item-option',
   templateUrl: './item-option.component.html',
@@ -12,15 +11,15 @@ import { iCurrency } from '../../interfaces/icurrency';
 export class ItemOptionComponent implements OnInit {
   @Input() currency: iCurrency;
   @Input() slidingItem: any;
-  @Input() allCurrencys: iCurrency[]
-  @Input() displayCurrencys: iCurrency[]
+  @Input() allCurrencies: iCurrency[]
+  @Input() displayCurrencies: iCurrency[]
 
-  constructor( private pickerCtrl: PickerController) { }
+  constructor(private pickerCtrl: PickerController) { }
 
   ngOnInit() { }
 
 
-  async showBasicPiker(clickedItemId: any, slidingItem) {
+  async showBasicPiker(currentItemId: any, slidingItem: any) {
     let opts: PickerOptions = {
       buttons: [
         {
@@ -30,26 +29,32 @@ export class ItemOptionComponent implements OnInit {
         {
           text: 'Done'
         }
-
       ],
       columns: [
         {
-          name: clickedItemId,
-          options: this.allCurrencys
+          name: currentItemId,
+          options: this.allCurrencies
         }
       ]
     };
 
     let picker = await this.pickerCtrl.create(opts);
-    picker.present();
 
+    picker.present();
     picker.onDidDismiss().then(async data => {
-      let col = await picker.getColumn(clickedItemId);
-      this.displayCurrencys[clickedItemId].text = col.options[col.selectedIndex].text;
+      let col = await picker.getColumn(currentItemId);
+
+      /*
+        - get this currency
+        - get target currency 
+        - exchange the selected item to listed item in displayCurrencies[]
+      */
+      let targetCurrenyText = col.options[col.selectedIndex].text;
+      let targetCurrency = this.allCurrencies.find(x => x.text == targetCurrenyText);
+      this.displayCurrencies[currentItemId] = targetCurrency;
 
       // close sliding item
       slidingItem.close();
-
     });
   }
 

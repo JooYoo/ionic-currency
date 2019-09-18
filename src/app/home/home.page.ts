@@ -23,9 +23,5 @@ export class HomePage {
 
     this.allCurrencys = this.currencyService.allCurrencys;
     this.displayCurrencys = this.currencyService.displayCurrencies;
-
-    console.log(this.allCurrencys);
-    console.log(this.displayCurrencys);
-
   }
 }
