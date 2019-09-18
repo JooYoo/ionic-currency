@@ -40,6 +40,9 @@
               },
               {
                 "input": "src/app/app.scss"
+              },
+              {
+                "input": "node_modules/flag-icon-css/css/flag-icon.css"
               }
             ],
             "scripts": [],

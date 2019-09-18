@@ -3,5 +3,11 @@
 }
 
 .selected-item {
-    --background:var(--ion-color-light);
- }
+  --background: var(--ion-color-light);
+}
+
+.icon--flag {
+  font-size: 2rem;
+  margin-top: 0.5rem;
+  margin-right: 1.5rem;
+}
