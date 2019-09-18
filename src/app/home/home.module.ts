@@ -11,6 +11,7 @@ import { ItemModule } from '../widget/item/item.module';
 import { ItemOptionModule } from '../widget/item-option/item-option.module';
 import { CalculatorModule } from '../widget/calculator/calculator.module';
 import { ItemAddModule } from '../widget/item-add/item-add.module';
+import { ItemRemoveModule } from '../widget/item-remove/item-remove.module';
 
 @NgModule({
   declarations: [HomePage],
@@ -29,7 +30,8 @@ import { ItemAddModule } from '../widget/item-add/item-add.module';
     ItemModule,
     ItemOptionModule,
     CalculatorModule,
-    ItemAddModule
+    ItemAddModule,
+    ItemRemoveModule
   ],
 })
 export class HomePageModule {}
