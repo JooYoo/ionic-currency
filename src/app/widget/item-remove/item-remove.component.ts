@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { iCurrency } from 'src/app/interfaces/icurrency';
+import { ItemService } from 'src/app/providers/item.service';
+import { CurrencyService } from 'src/app/providers/currency.service';
 
 @Component({
   selector: 'c-item-remove',
@@ -6,13 +9,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./item-remove.component.scss'],
 })
 export class ItemRemoveComponent implements OnInit {
+  @Input() selectedCurrency: iCurrency;
 
-  constructor() { }
+  constructor(private itemService:ItemService,
+              private currencyService: CurrencyService) { }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
-  removeItem(){
-    console.log("remove item clicked !")
+  removeItem() {
+    this.itemService.removeItem(this.selectedCurrency);
+    // FIXME: remove item doesnt work by js_filter
+    // console.log(this.currencyService.displayCurrencies)
   }
 
 }

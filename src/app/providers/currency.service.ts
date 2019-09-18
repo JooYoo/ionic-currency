@@ -36,6 +36,14 @@ export class CurrencyService {
     },
     {
       id: 3,
+      text: "GBP",
+      rate: 0,
+      kpResult: '',
+      kpInput: '',
+      isSelected: false
+    },
+    {
+      id: 4,
       text: "JPY",
       rate: 0,
       kpResult: '',
@@ -64,7 +72,6 @@ export class CurrencyService {
         this.setupCurrencys(key, apiCurrencies[key]);
       }
     });
-    this.setupDisplayCurrencies()
   }
 
   setupCurrencys(key: any, value: any) {
@@ -83,6 +90,7 @@ export class CurrencyService {
     this.findCurrency("CNY");
     this.findCurrency("EUR");
     this.findCurrency("USD");
+    this.findCurrency("GBP");
     this.findCurrency("JPY");
   }
   findCurrency(currencyType: string) {

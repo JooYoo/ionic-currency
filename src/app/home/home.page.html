@@ -7,9 +7,9 @@
 <ion-content>
 
 
-  <ion-item-sliding *ngFor="let currency of displayCurrencys" 
+  <ion-item-sliding *ngFor="let currency of displayCurrencies" 
                     #slidingItem>
-    <c-item-remove></c-item-remove>               
+    <c-item-remove [selectedCurrency]='currency'></c-item-remove>               
     <c-item [currency]='currency'>
       <c-calculator [currency]='currency' slot="end"></c-calculator>
     </c-item>

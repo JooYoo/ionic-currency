@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ItemService } from 'src/app/providers/item.service';
+import { CurrencyService } from 'src/app/providers/currency.service';
 
 @Component({
   selector: 'c-item-add',
@@ -13,6 +14,6 @@ export class ItemAddComponent implements OnInit {
   ngOnInit() {}
   
   addItem(){
-    this.itemService.addItem('EUR');
+    this.itemService.addItem('MXN');
   }
 }

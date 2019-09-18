@@ -9,19 +9,21 @@ import { CurrencyService } from '../providers/currency.service';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
-
-  displayCurrencys: iCurrency[];
   allCurrencys: iCurrency[];
 
   constructor(private currencyService: CurrencyService) { }
 
   ngOnInit() {
     /*
-      in the begining: update once all the currencys and load them to local Currency[]
+      - update once all the currencys and 
+      - load them to local Currency = allCurrencies[] + displayCurrencies
     */
     this.currencyService.getApiCurrenies('CNY');
-
     this.allCurrencys = this.currencyService.allCurrencys;
-    this.displayCurrencys = this.currencyService.displayCurrencies;
+    this.currencyService.setupDisplayCurrencies();
+  }
+
+  get displayCurrencies() {
+    return this.currencyService.displayCurrencies;
   }
 }
