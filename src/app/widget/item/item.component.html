@@ -2,7 +2,7 @@
           lines="none" 
           button 
           (click)="setItem()">
-  <span class="icon--flag flag-icon flag-icon-eu"></span>
+  <span class="icon--flag flag-icon" [ngClass]="currency.flag"></span>
   <ion-note class="note__item" color="dark">
     <h3>{{currency.text}}</h3>
   </ion-note>

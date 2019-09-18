@@ -16,7 +16,8 @@ export class CurrencyService {
       rate: 0,
       kpResult: '',
       kpInput: '',
-      isSelected: false
+      isSelected: false,
+      flag: "flag-icon-cn"
     },
     {
       id: 1,
@@ -24,7 +25,8 @@ export class CurrencyService {
       rate: 0,
       kpResult: '',
       kpInput: '',
-      isSelected: false
+      isSelected: false,
+      flag: "flag-icon-eu"
     },
     {
       id: 2,
@@ -32,7 +34,8 @@ export class CurrencyService {
       rate: 0,
       kpResult: '',
       kpInput: '',
-      isSelected: false
+      isSelected: false,
+      flag: "flag-icon-us"
     },
     {
       id: 3,
@@ -40,7 +43,8 @@ export class CurrencyService {
       rate: 0,
       kpResult: '',
       kpInput: '',
-      isSelected: false
+      isSelected: false,
+      flag: "flag-icon-gb"
     },
     {
       id: 4,
@@ -48,7 +52,8 @@ export class CurrencyService {
       rate: 0,
       kpResult: '',
       kpInput: '',
-      isSelected: false
+      isSelected: false,
+      flag: "flag-icon-jp"
     }
   ]
 
@@ -81,7 +86,8 @@ export class CurrencyService {
       rate: value.toFixed(2),
       kpResult: value.toFixed(2),
       kpInput: '',
-      isSelected: false
+      isSelected: false,
+      flag: 'flag-icon-' + (key.toLowerCase()).slice(0,-1)
     }
     this.allCurrencys.push(newCurrency);
   }

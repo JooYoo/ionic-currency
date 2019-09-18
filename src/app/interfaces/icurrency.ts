@@ -5,4 +5,5 @@ export interface iCurrency {
     kpInput: string;
     kpResult: string;
     isSelected: boolean;
+    flag: string
 }
