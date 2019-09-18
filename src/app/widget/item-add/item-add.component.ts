@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ItemService } from 'src/app/providers/item.service';
 
 @Component({
   selector: 'c-item-add',
@@ -7,11 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ItemAddComponent implements OnInit {
 
-  constructor() { }
+  constructor(private itemService:ItemService) { }
 
   ngOnInit() {}
   
   addItem(){
-    console.log("add clicked.")
+    this.itemService.addItem('EUR');
   }
 }
