@@ -10,6 +10,7 @@ import { KeypadModule } from '../widget/keypad/keypad.module';
 import { ItemModule } from '../widget/item/item.module';
 import { ItemOptionModule } from '../widget/item-option/item-option.module';
 import { CalculatorModule } from '../widget/calculator/calculator.module';
+import { ItemAddModule } from '../widget/item-add/item-add.module';
 
 @NgModule({
   declarations: [HomePage],
@@ -27,7 +28,8 @@ import { CalculatorModule } from '../widget/calculator/calculator.module';
     KeypadModule,
     ItemModule,
     ItemOptionModule,
-    CalculatorModule
+    CalculatorModule,
+    ItemAddModule
   ],
 })
 export class HomePageModule {}
