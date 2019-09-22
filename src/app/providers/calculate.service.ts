@@ -7,12 +7,14 @@ import { iCurrency } from '../interfaces/icurrency';
 })
 export class CalculateService {
 
-  public id: number = 0;
+  public id: number;
 
   public selectedItem: iCurrency;
   public unSelectedItems: iCurrency[]
 
-  constructor(private currencyService: CurrencyService) { }
+  constructor(private currencyService: CurrencyService) {
+    this.id = 0;
+   }
 
   getSelectId(id: number) {
     this.id = id;
@@ -28,8 +30,12 @@ export class CalculateService {
     this.selectedItem.isSelected = true;
     this.selectedItem.kpResult = '1.00';
     this.selectedItem.kpInput = '';
-    
-    this.apiEurFix(selectedCurrency);
+
+    try{
+      this.apiEurFix(selectedCurrency);
+    }catch(error){
+      return;
+    }
   }
   apiEurFix(selectedCurrency: iCurrency) {
     if (selectedCurrency.text == "EUR") {

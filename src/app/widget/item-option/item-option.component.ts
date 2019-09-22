@@ -2,6 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { PickerOptions } from '@ionic/core';
 import { PickerController } from '@ionic/angular';
 import { iCurrency } from '../../interfaces/icurrency';
+import { CalculateService } from '../../providers/calculate.service';
+import { CurrencyService } from '../../providers/currency.service';
 
 @Component({
   selector: 'c-item-option',
@@ -14,7 +16,9 @@ export class ItemOptionComponent implements OnInit {
   @Input() allCurrencies: iCurrency[]
   @Input() displayCurrencies: iCurrency[]
 
-  constructor(private pickerCtrl: PickerController) { }
+  constructor(private pickerCtrl: PickerController,
+    private calculateService: CalculateService,
+    private currencyService: CurrencyService) { }
 
   ngOnInit() { }
 
@@ -40,6 +44,7 @@ export class ItemOptionComponent implements OnInit {
 
     let picker = await this.pickerCtrl.create(opts);
 
+
     picker.present();
     picker.onDidDismiss().then(async data => {
       let col = await picker.getColumn(currentItemId);
@@ -51,7 +56,8 @@ export class ItemOptionComponent implements OnInit {
       */
       let targetCurrenyText = col.options[col.selectedIndex].text;
       let targetCurrency = this.allCurrencies.find(x => x.text == targetCurrenyText);
-      this.displayCurrencies[currentItemId] = targetCurrency;
+      let index = this.displayCurrencies.indexOf(this.currency);
+      this.displayCurrencies[index] = targetCurrency;
 
       // close sliding item
       slidingItem.close();
